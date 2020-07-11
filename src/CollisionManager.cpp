@@ -1,8 +1,7 @@
 #include "CollisionManager.h"
+#include "ObjectManager.h"
 #include "Util.h"
 #include <algorithm>
-
-
 
 int CollisionManager::squaredDistance(const glm::vec2 p1, const glm::vec2 p2)
 {
@@ -202,6 +201,28 @@ bool CollisionManager::lineAABBCheck(Ship* object1, GameObject* object2)
 	}
 
 	return false;
+}
+
+bool CollisionManager::LOSCheck(DisplayObject* from, DisplayObject* to)
+{
+	const auto lineStart = from->getTransform()->position;
+	const auto lineEnd = to->getTransform()->position;
+	
+	for (DisplayObject* object : *ObjectManager::GetObjects())
+	{
+		const auto boxWidth = object->getWidth();
+		const int halfBoxWidth = boxWidth * 0.5f;
+		const auto boxHeight = object->getHeight();
+		const int halfBoxHeight = boxHeight * 0.5f;
+		const auto boxStart = object->getTransform()->position - glm::vec2(halfBoxWidth, halfBoxHeight);
+
+		if (lineRectCheck(lineStart, lineEnd, boxStart, boxWidth, boxHeight))
+		{
+			return false;
+		}
+	}
+	
+	return true;
 }
 
 int CollisionManager::circleAABBsquaredDistance(const glm::vec2 circle_centre, int circle_radius, const glm::vec2 box_start, const int box_width, const int box_height)

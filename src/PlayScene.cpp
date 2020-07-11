@@ -1,6 +1,8 @@
 #include "PlayScene.h"
 #include "Game.h"
 #include "EventManager.h"
+#include "ObjectManager.h"
+#include "Util.h"
 
 PlayScene::PlayScene()
 {
@@ -10,14 +12,32 @@ PlayScene::PlayScene()
 PlayScene::~PlayScene()
 = default;
 
-void PlayScene::draw()
+void PlayScene::start()
 {
+	// Plane Sprite
+	m_pPlaneSprite = new Plane();
+	addChild(m_pPlaneSprite);
+
+	// Player Sprite
+	m_pPlayer = new Player();
+	addChild(m_pPlayer);
+	m_playerFacingRight = true;
+
+	addChild(ObjectManager::CreateObject(OBSTACLE));
+}
+
+void PlayScene::draw()
+{	
 	drawDisplayList();
+
+	Util::DrawLine(m_pPlayer->getTransform()->position, m_pPlaneSprite->getTransform()->position);
 }
 
 void PlayScene::update()
 {
 	updateDisplayList();
+
+	CollisionManager::LOSCheck(m_pPlayer,m_pPlaneSprite);
 }
 
 void PlayScene::clean()
@@ -101,16 +121,4 @@ void PlayScene::handleEvents()
 	{
 		TheGame::Instance()->changeSceneState(END_SCENE);
 	}
-}
-
-void PlayScene::start()
-{
-	// Plane Sprite
-	m_pPlaneSprite = new Plane();
-	addChild(m_pPlaneSprite);
-
-	// Player Sprite
-	m_pPlayer = new Player();
-	addChild(m_pPlayer);
-	m_playerFacingRight = true;
 }

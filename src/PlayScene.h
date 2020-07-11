@@ -6,6 +6,7 @@
 #include "Plane.h"
 #include "Player.h"
 #include "Button.h"
+#include "Obstacle.h"
 
 class PlayScene : public Scene
 {
