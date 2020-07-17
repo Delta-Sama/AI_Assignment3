@@ -4,8 +4,31 @@
 #include "ObjectManager.h"
 #include "Util.h"
 
+DebugMode::DebugMode(PlayScene* scene)
+{
+	m_playScene = scene;
+}
+
+void DebugMode::Draw()
+{
+	if (m_mode)
+	{
+		if (CollisionManager::LOSCheck(m_playScene->GetPlayer(), m_playScene->GetPlane()))
+			Util::DrawLine(m_playScene->GetPlayer()->getTransform()->position, m_playScene->GetPlane()->getTransform()->position);
+		else
+			Util::DrawLine(m_playScene->GetPlayer()->getTransform()->position, m_playScene->GetPlane()->getTransform()->position, glm::vec4(1, 0, 0, 1));
+
+		glm::vec2 halfPos = { m_playScene->GetPlayer()->getTransform()->position.x - m_playScene->GetPlayer()->getWidth()/2,
+			m_playScene->GetPlayer()->getTransform()->position.y - m_playScene->GetPlayer()->getHeight() / 2 };
+		Util::DrawRect(halfPos, m_playScene->GetPlayer()->getWidth(), m_playScene->GetPlayer()->getHeight());
+		Util::DrawRect(m_playScene->GetPlane()->getTransform()->position, m_playScene->GetPlane()->getWidth(), m_playScene->GetPlane()->getHeight());
+	}
+}
+
 PlayScene::PlayScene()
 {
+	debugger = new DebugMode(this);
+	
 	PlayScene::start();
 }
 
@@ -30,10 +53,7 @@ void PlayScene::draw()
 {	
 	drawDisplayList();
 
-	if (CollisionManager::LOSCheck(m_pPlayer, m_pPlaneSprite))
-		Util::DrawLine(m_pPlayer->getTransform()->position, m_pPlaneSprite->getTransform()->position);
-	else
-		Util::DrawLine(m_pPlayer->getTransform()->position, m_pPlaneSprite->getTransform()->position, glm::vec4(1, 0, 0, 1));
+	debugger->Draw();
 
 }
 
@@ -140,6 +160,11 @@ void PlayScene::handleEvents()
 		TheGame::Instance()->quit();
 	}
 
+	if (EventManager::Instance().onKeyPressed(SDL_SCANCODE_H))
+	{
+		debugger->SetMode(!debugger->GetMode());
+	}
+	
 	if (EventManager::Instance().isKeyDown(SDL_SCANCODE_1))
 	{
 		TheGame::Instance()->changeSceneState(START_SCENE);

@@ -9,6 +9,8 @@
 
 #include <vector>
 
+class DebugMode;
+
 class PlayScene : public Scene
 {
 public:
@@ -21,14 +23,36 @@ public:
 	virtual void clean() override;
 	virtual void handleEvents() override;
 	virtual void start() override;
+
+	Player* GetPlayer() { return m_pPlayer; }
+	Plane* GetPlane() { return m_pPlaneSprite; }
 private:
 	glm::vec2 m_mousePosition;
 
 	//std::vector<Enemy*>
+
+	DebugMode* debugger;
 	
 	Plane* m_pPlaneSprite;
 	Player* m_pPlayer;
 	bool m_playerFacingRight;
+};
+
+class DebugMode
+{
+public:
+	DebugMode(PlayScene* scene);
+	~DebugMode() = default;
+
+	PlayScene* m_playScene;
+	
+	void SetMode(bool newMode) { m_mode = newMode; }
+	bool GetMode() { return m_mode; }
+	void Draw();
+	
+private:
+	bool m_mode;
+	
 };
 
 #endif /* defined (__PLAY_SCENE__) */

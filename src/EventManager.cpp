@@ -1,5 +1,8 @@
 #include "EventManager.h"
 #include <iostream>
+#include <string>
+#include <iso646.h>
+
 #include "Game.h"
 
 void EventManager::reset()
@@ -13,6 +16,8 @@ void EventManager::update()
 {
 	if(m_isActive)
 	{
+        std::memcpy(m_prevKeyStates, m_keyStates, s_keysNum);
+		
 		for (auto controller : m_pGameControllers)
 		{
 			if(SDL_GameControllerGetAttached(controller->handle))
@@ -118,14 +123,26 @@ bool EventManager::isKeyUp(const SDL_Scancode key) const
     return false;
 }
 
+bool EventManager::onKeyPressed(SDL_Scancode key) const
+{
+    if (m_keyStates != nullptr and m_prevKeyStates != nullptr)
+    {
+        if (m_prevKeyStates[key] == 0 and m_keyStates[key] == 1)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
 void EventManager::onKeyDown()
 {
-    m_keyStates = SDL_GetKeyboardState(nullptr);
+    m_keyStates = SDL_GetKeyboardState(&s_keysNum);
 }
 
 void EventManager::onKeyUp()
 {
-    m_keyStates = SDL_GetKeyboardState(nullptr);
+    m_keyStates = SDL_GetKeyboardState(&s_keysNum);
 }
 
 void EventManager::onMouseMove(SDL_Event& event)
@@ -216,6 +233,10 @@ EventManager::EventManager():
 {
 	// initialize mouse position
     m_mousePosition = glm::vec2(0.0f, 0.0f);
+
+    m_keyStates = SDL_GetKeyboardState(&s_keysNum);
+    m_prevKeyStates = new Uint8[s_keysNum];
+    std::memcpy(m_prevKeyStates, m_keyStates, s_keysNum);
 	
     // initialize button states for the mouse
     for (auto& mouseButtonState : m_mouseButtons)
