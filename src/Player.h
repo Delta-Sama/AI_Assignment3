@@ -8,14 +8,18 @@
 class Player final : public Sprite
 {
 public:
-	Player();
+	Player(SDL_FRect dst);
 	~Player();
 
 	// Life Cycle Methods
 	virtual void draw() override;
 	virtual void update() override;
 	virtual void clean() override;
+	void setAccelX(double acc);
+	void setAccelY(double acc);
 
+	void move();
+	
 	// setters
 	void setAnimationState(PlayerAnimationState new_state);
 

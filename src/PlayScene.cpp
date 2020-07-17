@@ -15,11 +15,11 @@ PlayScene::~PlayScene()
 void PlayScene::start()
 {
 	// Plane Sprite
-	m_pPlaneSprite = new Plane();
+	m_pPlaneSprite = new Plane({0.0f,0.0f,0.0f,0.0f});
 	addChild(m_pPlaneSprite);
 
 	// Player Sprite
-	m_pPlayer = new Player();
+	m_pPlayer = new Player({ 0.0f,0.0f,0.0f,0.0f });
 	addChild(m_pPlayer);
 	m_playerFacingRight = true;
 
@@ -30,14 +30,16 @@ void PlayScene::draw()
 {	
 	drawDisplayList();
 
-	Util::DrawLine(m_pPlayer->getTransform()->position, m_pPlaneSprite->getTransform()->position);
+	if (CollisionManager::LOSCheck(m_pPlayer, m_pPlaneSprite))
+		Util::DrawLine(m_pPlayer->getTransform()->position, m_pPlaneSprite->getTransform()->position);
+	else
+		Util::DrawLine(m_pPlayer->getTransform()->position, m_pPlaneSprite->getTransform()->position, glm::vec4(1, 0, 0, 1));
+
 }
 
 void PlayScene::update()
 {
 	updateDisplayList();
-
-	CollisionManager::LOSCheck(m_pPlayer,m_pPlaneSprite);
 }
 
 void PlayScene::clean()
@@ -59,11 +61,13 @@ void PlayScene::handleEvents()
 			{
 				m_pPlayer->setAnimationState(PLAYER_RUN_RIGHT);
 				m_playerFacingRight = true;
+				m_pPlayer->setAccelX(1.0f);
 			}
 			else if (EventManager::Instance().getGameController(0)->LEFT_STICK_X < -deadZone)
 			{
 				m_pPlayer->setAnimationState(PLAYER_RUN_LEFT);
 				m_playerFacingRight = false;
+				m_pPlayer->setAccelX(-1.0f);
 			}
 			else
 			{
@@ -76,9 +80,19 @@ void PlayScene::handleEvents()
 					m_pPlayer->setAnimationState(PLAYER_IDLE_LEFT);
 				}
 			}
+
+			if (EventManager::Instance().getGameController(0)->LEFT_STICK_Y > deadZone)
+			{
+				m_playerFacingRight == true ? m_pPlayer->setAnimationState(PLAYER_RUN_RIGHT) : m_pPlayer->setAnimationState(PLAYER_RUN_LEFT);
+				m_pPlayer->setAccelY(-1.0f);
+			}
+			else if (EventManager::Instance().getGameController(0)->LEFT_STICK_Y < -deadZone)
+			{
+				m_playerFacingRight == true ? m_pPlayer->setAnimationState(PLAYER_RUN_RIGHT) : m_pPlayer->setAnimationState(PLAYER_RUN_LEFT);
+				m_pPlayer->setAccelY(1.0f);
+			}
 		}
 	}
-
 
 	// handle player movement if no Game Controllers found
 	if (SDL_NumJoysticks() < 1)
@@ -87,11 +101,14 @@ void PlayScene::handleEvents()
 		{
 			m_pPlayer->setAnimationState(PLAYER_RUN_LEFT);
 			m_playerFacingRight = false;
+			m_pPlayer->setAccelX(-1.0f);
+			
 		}
 		else if (EventManager::Instance().isKeyDown(SDL_SCANCODE_D))
 		{
 			m_pPlayer->setAnimationState(PLAYER_RUN_RIGHT);
 			m_playerFacingRight = true;
+			m_pPlayer->setAccelX(1.0f);
 		}
 		else
 		{
@@ -103,6 +120,17 @@ void PlayScene::handleEvents()
 			{
 				m_pPlayer->setAnimationState(PLAYER_IDLE_LEFT);
 			}
+		}
+		
+		if (EventManager::Instance().isKeyDown(SDL_SCANCODE_W))
+		{
+			m_playerFacingRight == true ? m_pPlayer->setAnimationState(PLAYER_RUN_RIGHT) : m_pPlayer->setAnimationState(PLAYER_RUN_LEFT);
+			m_pPlayer->setAccelY(-1.0f);
+		}
+		else if (EventManager::Instance().isKeyDown(SDL_SCANCODE_S))
+		{
+			m_playerFacingRight == true ? m_pPlayer->setAnimationState(PLAYER_RUN_RIGHT) : m_pPlayer->setAnimationState(PLAYER_RUN_LEFT);
+			m_pPlayer->setAccelY(1.0f);
 		}
 	}
 	

@@ -1,6 +1,6 @@
 #include "Sprite.h"
 
-Sprite::Sprite()
+Sprite::Sprite(SDL_FRect dst) : m_dst(dst)
 {
 }
 

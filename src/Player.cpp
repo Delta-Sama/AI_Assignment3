@@ -1,7 +1,10 @@
 #include "Player.h"
+
+#include <algorithm>
+
 #include "TextureManager.h"
 
-Player::Player(): m_currentAnimationState(PLAYER_IDLE_RIGHT)
+Player::Player(SDL_FRect dst) : Sprite(dst), m_currentAnimationState(PLAYER_IDLE_RIGHT)
 {
 	TextureManager::Instance()->loadSpriteSheet(
 		"../Assets/sprites/atlas.txt",
@@ -17,8 +20,10 @@ Player::Player(): m_currentAnimationState(PLAYER_IDLE_RIGHT)
 	setHeight(58);
 
 	getTransform()->position = glm::vec2(150.0f, 500.0f);
+	
 	getRigidBody()->velocity = glm::vec2(0.0f, 0.0f);
 	getRigidBody()->acceleration = glm::vec2(0.0f, 0.0f);
+	getRigidBody()->maxSpeed = 4.0f;
 	getRigidBody()->isColliding = false;
 	setType(PLAYER);
 
@@ -61,10 +66,50 @@ void Player::draw()
 
 void Player::update()
 {
+	move();
 }
 
 void Player::clean()
 {
+}
+
+void Player::setAccelX(double acc) { getRigidBody()->acceleration.x = acc; }
+void Player::setAccelY(double acc) { getRigidBody()->acceleration.y = acc; }
+
+void Player::move()
+{
+	// X axis
+	
+	getRigidBody()->velocity.x += getRigidBody()->acceleration.x;
+	getRigidBody()->velocity.x *= 0.9;
+	getRigidBody()->velocity.x = std::min(std::max(getRigidBody()->velocity.x, -getRigidBody()->maxSpeed), (getRigidBody()->maxSpeed));
+
+	// Y axis
+	getRigidBody()->velocity.y += getRigidBody()->acceleration.y;
+	getRigidBody()->velocity.y *= 0.9;
+	getRigidBody()->velocity.y = std::min(std::max(getRigidBody()->velocity.y, -getRigidBody()->maxSpeed), (getRigidBody()->maxSpeed));
+
+	getTransform()->position.x += (int)this->getRigidBody()->velocity.x;
+	getTransform()->position.y += (int)this->getRigidBody()->velocity.y;
+	
+	getRigidBody()->acceleration.x = getRigidBody()->acceleration.y = 0.0;
+
+	if (getTransform()->position.x < 0 + getWidth() / 2.0)
+	{
+		getTransform()->position.x = 0 + getWidth() / 2.0;
+	}
+	else if (getTransform()->position.x > 800 - getWidth() / 2.0)
+	{
+		getTransform()->position.x = 800 - getWidth() / 2.0;
+	}
+	if (getTransform()->position.y < 0 + getHeight() / 2.0)
+	{
+		getTransform()->position.y = 0 + getHeight() / 2.0;
+	}
+	else if (getTransform()->position.y > 600 - getHeight() / 2.0)
+	{
+		getTransform()->position.y = 600 - getHeight() / 2.0;
+	}
 }
 
 void Player::setAnimationState(const PlayerAnimationState new_state)

@@ -6,7 +6,8 @@
 #include "Plane.h"
 #include "Player.h"
 #include "Button.h"
-#include "Obstacle.h"
+
+#include <vector>
 
 class PlayScene : public Scene
 {
@@ -23,6 +24,8 @@ public:
 private:
 	glm::vec2 m_mousePosition;
 
+	//std::vector<Enemy*>
+	
 	Plane* m_pPlaneSprite;
 	Player* m_pPlayer;
 	bool m_playerFacingRight;

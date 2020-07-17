@@ -1,7 +1,7 @@
 #include "Plane.h"
 #include "TextureManager.h"
 
-Plane::Plane()
+Plane::Plane(SDL_FRect dst) : Sprite(dst)
 {
 	TextureManager::Instance()->loadSpriteSheet(
 		"../Assets/sprites/atlas.txt",

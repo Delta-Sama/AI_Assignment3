@@ -7,7 +7,7 @@
 class Plane final : public Sprite
 {
 public:
-	Plane();
+	Plane(SDL_FRect dst);
 	~Plane();
 
 	// Life Cycle Functions

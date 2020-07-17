@@ -25,117 +25,132 @@
     <Filter Include="Core">
       <UniqueIdentifier>{21657abb-080f-4d0e-bc26-e9581cebc5a3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Core\Headers">
+      <UniqueIdentifier>{5c90215e-23e8-468a-8c60-4badbf7e8f4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Source">
+      <UniqueIdentifier>{f230128f-b235-43d4-8d6a-35d72062b3cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Objects\Headers">
+      <UniqueIdentifier>{325406d8-bf91-4289-a06d-bb68b02f7fdf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Objects\Source">
+      <UniqueIdentifier>{6804ea7d-d2df-446a-97bb-832972e25ca7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\Headers">
+      <UniqueIdentifier>{75b9f9ba-a4aa-4e24-b12b-a94e496972c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\Source">
+      <UniqueIdentifier>{158e895c-8e5e-4e8c-bc40-a8c5821ca575}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes\Header">
+      <UniqueIdentifier>{e304117c-f268-4112-8cc2-b361d1c1d6f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes\Source">
+      <UniqueIdentifier>{4036b304-ef20-40f5-a0e3-92b52e6eda2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Singletons\Headers">
+      <UniqueIdentifier>{15e99e38-f5ab-46b1-bdd5-645b7dd5168e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Singletons\Source">
+      <UniqueIdentifier>{81554974-663d-4e35-bc0a-8d1e805fce11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI Objects\Headers">
+      <UniqueIdentifier>{c9f9e7c3-66fb-4488-abb0-3a2b55d50073}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI Objects\Source">
+      <UniqueIdentifier>{babe1ef4-ee33-4fb1-ba4f-80a37e4ca432}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\StartScene.cpp">
-      <Filter>Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\EndScene.cpp">
-      <Filter>Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\CollisionManager.cpp">
-      <Filter>Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\FontManager.cpp">
-      <Filter>Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\SoundManager.cpp">
-      <Filter>Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\TextureManager.cpp">
-      <Filter>Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Player.cpp">
-      <Filter>Game Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\PlayScene.cpp">
-      <Filter>Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Button.cpp">
-      <Filter>UI Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Label.cpp">
-      <Filter>UI Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\ship.cpp">
-      <Filter>Game Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Target.cpp">
-      <Filter>Game Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Renderer.cpp">
-      <Filter>Singletons</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Game.cpp">
-      <Filter>Singletons</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\EventManager.cpp">
-      <Filter>Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Util.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\DisplayObject.cpp">
-      <Filter>Core</Filter>
+      <Filter>Core\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\GameController.cpp">
-      <Filter>Core</Filter>
+      <Filter>Core\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\GameObject.cpp">
-      <Filter>Core</Filter>
+      <Filter>Core\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\main.cpp">
-      <Filter>Core</Filter>
+      <Filter>Core\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Scene.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\SpriteSheet.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\UIControl.cpp">
-      <Filter>Core</Filter>
+      <Filter>Core\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Sprite.cpp">
-      <Filter>Core</Filter>
+      <Filter>Core\Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\Plane.cpp">
-      <Filter>Game Objects</Filter>
+    <ClCompile Include="..\src\SpriteSheet.cpp">
+      <Filter>Core\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\UIControl.cpp">
+      <Filter>Core\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Util.cpp">
+      <Filter>Core\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Obstacle.cpp">
-      <Filter>Game Objects</Filter>
+      <Filter>Game Objects\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Plane.cpp">
+      <Filter>Game Objects\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Player.cpp">
+      <Filter>Game Objects\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ship.cpp">
+      <Filter>Game Objects\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Target.cpp">
+      <Filter>Game Objects\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\CollisionManager.cpp">
+      <Filter>Managers\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\EventManager.cpp">
+      <Filter>Managers\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\FontManager.cpp">
+      <Filter>Managers\Source</Filter>
     </ClCompile>
     <ClCompile Include="..\src\ObjectManager.cpp">
-      <Filter>Managers</Filter>
+      <Filter>Managers\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\SoundManager.cpp">
+      <Filter>Managers\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\TextureManager.cpp">
+      <Filter>Managers\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\EndScene.cpp">
+      <Filter>Scenes\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\PlayScene.cpp">
+      <Filter>Scenes\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\StartScene.cpp">
+      <Filter>Scenes\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Game.cpp">
+      <Filter>Singletons\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Renderer.cpp">
+      <Filter>Singletons\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Button.cpp">
+      <Filter>UI Objects\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Label.cpp">
+      <Filter>UI Objects\Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\StartScene.h">
-      <Filter>Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\EndScene.h">
-      <Filter>Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\CollisionManager.h">
-      <Filter>Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\FontManager.h">
-      <Filter>Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\SoundManager.h">
-      <Filter>Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\TextureManager.h">
-      <Filter>Managers</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\GameObjectType.h">
       <Filter>Enums</Filter>
     </ClInclude>
     <ClInclude Include="..\src\SceneState.h">
       <Filter>Enums</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Player.h">
-      <Filter>Game Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\src\PlayerAnimationState.h">
       <Filter>Enums</Filter>
@@ -149,83 +164,104 @@
     <ClInclude Include="..\src\Event.h">
       <Filter>Enums</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\PlayScene.h">
-      <Filter>Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Button.h">
-      <Filter>UI Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Label.h">
-      <Filter>UI Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ship.h">
-      <Filter>Game Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Target.h">
-      <Filter>Game Objects</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\Transform.h">
       <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="..\src\RigidBody.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\Renderer.h">
-      <Filter>Singletons</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Game.h">
-      <Filter>Singletons</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\EventManager.h">
-      <Filter>Managers</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\MouseButtons.h">
       <Filter>Enums</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Animation.h">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Config.h">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\DisplayObject.h">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Frame.h">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\GameController.h">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\GameObject.h">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Scene.h">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\SpriteSheet.h">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Util.h">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\UIControl.h">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Sprite.h">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\Plane.h">
-      <Filter>Game Objects</Filter>
     </ClInclude>
     <ClInclude Include="..\src\SoundType.h">
       <Filter>Enums</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\Animation.h">
+      <Filter>Core\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Config.h">
+      <Filter>Core\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\DisplayObject.h">
+      <Filter>Core\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Frame.h">
+      <Filter>Core\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\GameController.h">
+      <Filter>Core\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\GameObject.h">
+      <Filter>Core\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Scene.h">
+      <Filter>Core\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Sprite.h">
+      <Filter>Core\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\SpriteSheet.h">
+      <Filter>Core\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\UIControl.h">
+      <Filter>Core\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Util.h">
+      <Filter>Core\Headers</Filter>
+    </ClInclude>
     <ClInclude Include="..\src\Obstacle.h">
-      <Filter>Game Objects</Filter>
+      <Filter>Game Objects\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Plane.h">
+      <Filter>Game Objects\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Player.h">
+      <Filter>Game Objects\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ship.h">
+      <Filter>Game Objects\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Target.h">
+      <Filter>Game Objects\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\CollisionManager.h">
+      <Filter>Managers\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\EventManager.h">
+      <Filter>Managers\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\FontManager.h">
+      <Filter>Managers\Headers</Filter>
     </ClInclude>
     <ClInclude Include="..\src\ObjectManager.h">
-      <Filter>Managers</Filter>
+      <Filter>Managers\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\SoundManager.h">
+      <Filter>Managers\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\TextureManager.h">
+      <Filter>Managers\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\EndScene.h">
+      <Filter>Scenes\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\PlayScene.h">
+      <Filter>Scenes\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\StartScene.h">
+      <Filter>Scenes\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Game.h">
+      <Filter>Singletons\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Renderer.h">
+      <Filter>Singletons\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Button.h">
+      <Filter>UI Objects\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Label.h">
+      <Filter>UI Objects\Headers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
