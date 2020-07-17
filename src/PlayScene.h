@@ -24,6 +24,8 @@ public:
 	virtual void handleEvents() override;
 	virtual void start() override;
 
+	void checkCollision();
+
 	Player* GetPlayer() { return m_pPlayer; }
 	Plane* GetPlane() { return m_pPlaneSprite; }
 private:

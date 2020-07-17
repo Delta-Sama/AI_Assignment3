@@ -65,14 +65,17 @@ bool CollisionManager::AABBCheck(GameObject* object1, GameObject* object2)
 		p1.y + p1Height > p2.y
 		)
 	{
-		if (!object2->getRigidBody()->isColliding) {
-
+		if (!object2->getRigidBody()->isColliding)
+		{
 			object2->getRigidBody()->isColliding = true;
 
 			switch (object2->getType()) {
 			case TARGET:
 				std::cout << "Collision with Target!" << std::endl;
 				SoundManager::Instance().playSound("yay", 0);
+				break;
+			case PLANE:
+				std::cout << "Collision with Plane!" << std::endl;
 				break;
 			default:
 				
@@ -81,7 +84,7 @@ bool CollisionManager::AABBCheck(GameObject* object1, GameObject* object2)
 
 			return true;
 		}
-		return false;
+		return true;
 	}
 	else
 	{
@@ -336,6 +339,49 @@ bool CollisionManager::pointRectCheck(const glm::vec2 point, const glm::vec2 rec
 	return false;
 }
 
+void CollisionManager::CheckGameCollisions()
+{
+	/*for (MapObject* mapObject : mapObjects) // For each platform.
+	{
+		SDL_FRect* mapObjectRect = mapObject->GetDstP();
+		if (mapObject->getCanCollide() and COMA::AABBCheck(*obj->GetDstP(), *mapObjectRect))
+		{
+			if (obj->GetDstP()->y + obj->GetDstP()->h - (float)obj->GetVelY() <= mapObjectRect->y)
+			{ // Colliding top side of platform.
+				MapObject* newFloor = oldFloor;
+				if (oldFloor == nullptr
+					or SquareRectDistance(*oldFloor->GetDstP(), *obj->GetDstP()) > SquareRectDistance(*mapObjectRect, *obj->GetDstP()))
+				{
+					newFloor = mapObject;
+				}
+				obj->SetGrounded(true, newFloor);
+				obj->StopY();
+				obj->SetY(mapObjectRect->y - obj->GetDstP()->h - 1);
+			}
+			else if (obj->GetDstP()->y - (float)obj->GetVelY() >= mapObjectRect->y + mapObjectRect->h)
+			{ // Colliding bottom side of platform.
+				obj->StopY();
+				obj->SetY(mapObjectRect->y + mapObjectRect->h);
+			}
+			else if (obj->GetDstP()->x + obj->GetDstP()->w - (float)obj->GetVelX() <= mapObjectRect->x)
+			{ // Collision from left.
+				if ((obj->GetDstP()->y + obj->GetDstP()->h - (float)obj->GetVelY() > mapObjectRect->y) or not obj->IsGrounded())
+				{
+					obj->StopX();
+					obj->SetX(mapObjectRect->x - obj->GetDstP()->w);
+				}
+			}
+			else if (obj->GetDstP()->x - (float)obj->GetVelX() >= mapObjectRect->x + mapObjectRect->w)
+			{ // Colliding right side of platform.
+				if ((obj->GetDstP()->y + obj->GetDstP()->h - (float)obj->GetVelY() > mapObjectRect->y) or not obj->IsGrounded())
+				{
+					obj->StopX();
+					obj->SetX(mapObjectRect->x + mapObjectRect->w);
+				}
+			}
+		}
+	}*/
+}
 
 CollisionManager::CollisionManager()
 = default;
