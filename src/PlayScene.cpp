@@ -77,6 +77,7 @@ void PlayScene::checkCollision()
 void PlayScene::clean()
 {
 	removeAllChildren();
+	delete debugger;
 }
 
 void PlayScene::handleEvents()
